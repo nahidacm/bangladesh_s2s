@@ -17,8 +17,15 @@ Next to the scripts, the repository contains a configuration file (config_bd_s2s
 
 ## Scripts
 The current script uses ECMWF data and creates a forecast. Without the ECMWF grib files, the procedure of producing a forecast is as follows:
- 1. Run the script download_ecmwf_s2s_from_wi_api.py to collect the ECMWF netcdf input files
- 2. Run the script s2s_operational_forecast.py for the forecast
+ 1a. Run the script download_ecmwf_s2s_from_wi_api.py to collect the ECMWF netcdf input files
+ 1b. Run the script download_s2s_iri_datalibrary_operational.py to collect the ECCC netcdf input files
+ 2a. Run prepare_ecmwf_data.py to prepare the ECMWF data input
+ 2b. Run prepare_eccc_data.py to prepare the ECCC data input
+ 3. Run the script s2s_operational_forecast.py for the forecast
 
-Note that the ECMWF data is available twice a week: on Monday and Thursday. The two scripts are build to run one day later (Tuesday and Friday) early in the day and use the forecast of the day before.
+Note that the ECMWF data is available twice a week: on Monday and Thursday. The ECCC data is available every Thursday. 
+
+The operational forecast script checks which data is available and creates a multi-model output if both models are available, or a single model output if only one is available.
+
+The scripts are build to run one day later (Tuesday and Friday) early in the day and use the forecast of the day before.
 
