@@ -149,7 +149,7 @@ for var in varnames.keys():
     ec_hc_daily = ec_hc_daily.assign_coords({'doy': xr.DataArray([datetime.datetime.utcfromtimestamp(i.tolist()/1e9).strftime('%m-%d') for i in ec_hc_daily.coords['time'].values], dims='time')})
     
     doy_fc = np.unique(ec_fc_daily.coords['doy'].values)
-    days_to_take = [obs.doy[ii] in doy_fc for ii in range(len(obs.doy))]
+    days_to_take = [obs.doy[ii].values in doy_fc for ii in range(len(obs.doy))]
     
     obs = obs[days_to_take]
     
