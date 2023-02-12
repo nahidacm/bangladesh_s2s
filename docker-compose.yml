@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  application:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: python_s2s
+    container_name: python_s2s
+    restart: unless-stopped
+    volumes:
+      - ./:/usr/src/app
